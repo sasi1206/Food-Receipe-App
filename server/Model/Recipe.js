@@ -14,6 +14,10 @@ const recipeSchema = new Schema({
         type:String,
         required:true
     }],
+    author_id:{
+        type:String,
+        required:true
+    },
     author:{
         type:String,
         required:true,
@@ -57,10 +61,16 @@ const recipeSchema = new Schema({
         type:String,
         required:true
     },
-    serving:{
-        type:String,
-        required:true
-    },
+    additional_timings:[{
+        key:{
+            type:String,
+            required:true
+        },
+        value:{
+            type:String,
+            required:true
+        }
+    }],
     difficulty:{
         type:String,
         required:true
@@ -133,6 +143,6 @@ const recipeSchema = new Schema({
     }]
 });
 
-const model = model('recipes',recipeSchema);
+const model = model('Recipes',recipeSchema);
 
 module.exports = model;

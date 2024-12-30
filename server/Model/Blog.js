@@ -5,6 +5,10 @@ const BlogSchema = new Schema({
         type:String,
         required:true
     },
+    author_id:{
+        type:String,
+        required:true
+    },
     author:{
         type:String,
         required:true
@@ -12,5 +16,109 @@ const BlogSchema = new Schema({
     blog_title:{
         type:String,
         required:true
-    }
-})
+    },
+    posted_on:{
+        type:String,
+        required:true
+    },
+    reading_time:{
+        type:String,
+        required:true
+    },
+    image:{
+        type:String,
+        required:true
+    },
+    description:{
+        type:String,
+        required:true
+    },
+    blog_sections:[{
+        section_id:{
+            type:String,
+            required:true
+        },
+        section_title:{
+            type:String,
+            required:true
+        },
+        section_content:{
+            type:String,
+            required:true
+        },
+        section_image:{
+            type:String,
+            required:true
+        }
+    }],
+    tags:[{
+        type:String,
+        required:true
+    }],
+    comments:[{
+        user_pfp:{
+            type:String,
+            required:true
+        },
+        user_name:{
+            type:String,
+            required:true
+        },
+        rating:{
+            type:Number,
+            required:true
+        },
+        commented_on:{
+            type:String,
+            required:true
+        },
+        likes:{
+            type:Number,
+            required:true
+        },
+        comment:{
+            type:String,
+            required:true
+        },
+        replies:[{
+            user_pfp:{
+                type:String,
+                required:true
+            },
+            user_name:{
+                type:String,
+                required:true
+            },
+            replied_on:{
+                type:String,
+                required:true
+            },
+            reply:{
+                type:String,
+                required:true
+            },
+            replying_to:{
+                type:String,
+                required:true
+            }
+        }]
+    }],
+    ratings:{
+        total_rating:{
+            type:Number,
+            required:true
+        },
+        number_of_ratings:{
+            type:Number,
+            required:true
+        },
+        average_rating:{
+            type:Number,
+            required:true
+        }
+    },
+});
+
+const Blog = model('Blogs', BlogSchema);
+
+module.exports = Blog;

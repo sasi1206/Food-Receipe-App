@@ -25,10 +25,10 @@ const userSchema = new Schema({
     },
     profile_picture:{
         type:String,
-        required:true
     },
-    favorite_recipes:[],
-    saved_blogs:[],
+    refresh_token:String
 });
 
-const users = model('users',userSchema);
+const Users = model('users',userSchema);
+
+module.exports = Users;
