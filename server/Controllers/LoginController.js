@@ -35,8 +35,8 @@ const LoginController = async ( req, res ) =>{
                 findUser.save().then(()=>{
                     res.cookie('access_token',access_token,{
                         httpOnly:true,
-                        sameSite:'strict',
-                        secure:true
+                        sameSite:'lax',
+                        secure:false
                     });
                     res.status(200).json({
                         success:true,

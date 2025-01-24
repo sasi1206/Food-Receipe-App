@@ -10,6 +10,7 @@ const RegisterController = async (req,res)=>{
         try {
             const hashedPassword = await bcrypt.hash(password,10);
             const newUser = new Users({
+                id:Math.floor(Math.random()*1E6),
                 first_name:first_name,
                 last_name:last_name,
                 email:email,

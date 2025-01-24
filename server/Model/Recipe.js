@@ -143,6 +143,6 @@ const recipeSchema = new Schema({
     }]
 });
 
-const model = model('Recipes',recipeSchema);
+const Recipe = model('Recipes',recipeSchema);
 
-module.exports = model;
+module.exports = Recipe;
