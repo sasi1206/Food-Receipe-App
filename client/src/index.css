@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Cookie&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import 'tailwindcss';
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+    
+}
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+@keyframes LoginSlideIn{
+    from{
+        right: 50%;
+    }to{
+        right:0;
+    }
+}
+@keyframes LoginSlideOut{
+    from{
+        left: 50%;
+    }to{
+        left: 0;
+    }
+}
+
+@keyframes RegisterSection{
+    from{
+        left: 50%;
+    }to{
+        left: 0;
+    }
+}
+@keyframes RegisterForm{
+    from{
+        right: 50%;
+    }to{
+        right: 0;
+    }
+}
+
+@keyframes LoginSection{
+    from{
+        right: 50%;
+    }to{
+        right: 0;
+    }
+}
+@keyframes LoginForm{
+    from{
+        left: 50%;
+    }to{
+        left: 0;
+    }
+}
+
+
+@theme{
+    --font-logo: "Amatic SC", sans-serif;
+    --font-secondary: 'Lato', sans-serif;
+    --font-cookie: "Cookie";
+
+    --color-primary: #2563EB;
+
+    --animate-slideIn: slideIn 0.3s ease-in-out forwards;
+    --animate-slideOut: slideOut 0.3s ease-in-out forwards;
+
+    --animate-LoginSlideIn: LoginSlideIn 0.3s ease-in-out forwards;
+    --animate-LoginSlideOut: LoginSlideOut 0.3s ease-in-out forwards;
+
+    --animate-RegisterSection: RegisterSection 0.5s ease-in-out forwards;
+    --animate-RegisterForm: RegisterForm 0.5s ease-in-out forwards;
+    --animate-LoginSection: LoginSection 0.5s ease-in-out forwards;
+    --animate-LoginForm: LoginForm 0.5s ease-in-out forwards;
+}
+
+@layer components{
+    .nav-item{
+        @apply text-gray-600 font-semibold text-[1rem] font-secondary hover:text-primary focus:text-primary
+    }
+    .line{
+        @apply inline-block w-5 h-0.5 bg-black transition-transform transition-discrete duration-300 ease-in-out rounded-[5px]
+    }
+    .auth-label{
+        @apply font-bold mb-2 text-[#333] text-[1rem] block mt-4;
+    }
+    .auth-input{
+        @apply w-full px-5 py-3 border-2 border-[#e0e0e0] rounded-2xl transition-all bg-[rgba(255,255,255,0.9)] focus:outline-0 focus:border-primary focus:shadow focus:shadow-[rgba(37,99,235,0.1)] focus:bg-white placeholder:text-[#999]
+    }
+    .auth-button{
+        @apply w-4/5 p-3 bg-linear-[135deg] from-primary to-[#3b82f6] text-white border-0 rounded-2xl text-[1rem] font-semibold cursor-pointer transition-all transition-discrete mt-5 mb-0 hover:-translate-y-0.5
+        hover:shadow-lg m-auto
+    }
+}

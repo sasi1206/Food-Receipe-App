@@ -1,9 +1,4 @@
-import { IoMdHeartEmpty } from "react-icons/io";
-import { FiClock } from "react-icons/fi";
-import { CiStar } from "react-icons/ci";
-import { GoBook } from 'react-icons/go';
-
-import '../../Styles/LandingPage/PopularRecipes.css';
+import RecipeCard from "../../Components/RecipeCard";
 
 const PopularRecipes = () => {
 
@@ -95,49 +90,25 @@ const PopularRecipes = () => {
     }];
 
     return (
-        <section className="popular-recipes">
-            <h1 className="popular-recipes-title">Popular Recipes Near You</h1>
-            <p className="popular-recipes-description">Discover trending recipes from talented chefs in your area</p>
-            <section className="popular-recipes-lists">
+        <section className="px-[3%] flex flex-col items-center gap-4 font-secondary">
+            <p className="text-3xl font-black text-center max-sm:w-[70%]">Popular Recipes Near You</p>
+            <p className="text-xl font-normal text-[#555] text-center max-sm:w-[60%] max-sm:text-sm">Discover trending recipes from talented chefs in your area</p>
+            <section className="grid gird-cols-1 gap-8 p-4 justify-center md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
                 {
                     popularRecipes.map(recipe=>
-                        <section className="recipe"  key={recipe.id}>
-                            <section className="image-container">
-                                <img src={recipe.image} alt={recipe.name} className="recipe-image" />
-                                <section className="level">
-                                    <p className={`${recipe.level} recipe-level`}>{recipe.level}</p>
-                                    <button className="wishlist">
-                                        <IoMdHeartEmpty size={17}/>
-                                    </button>
-                                </section>
-                            </section>
-                            <section className="recipe-details">
-                                <section className='recipe-header'>
-                                    <p className="nationality">{recipe.nationality}</p>
-                                    <p className="time">
-                                        <FiClock />
-                                        <span>{recipe.time}</span>
-                                    </p>
-                                </section>
-                                <h3 className="recipe-name">{recipe.name}</h3>
-                                <p className="recipe-description">{recipe.description}</p>
-                                <section className="footer">
-                                    <section className="rating">
-                                        <CiStar size={20} color="rgb(250 204 21)" fill="black"/>
-                                        <p className="rating-value">{recipe.rating}</p>
-                                        <p className="reviews-count">({recipe.reviews})</p>
-                                    </section>
-                                    <section className="chef">
-                                        <img src={recipe.chef.image} alt={recipe.chef.name} className="chef-image" />
-                                        <p className="chef-name">{recipe.chef.name}</p>
-                                    </section>
-                                </section>
-                                <button className="view-recipe">
-                                    <GoBook size={20}/>
-                                    <span>View Recipe</span>
-                                </button>
-                            </section>
-                        </section>
+                        <RecipeCard 
+                            id={recipe.id}
+                            name={recipe.name}
+                            description={recipe.description}
+                            image={recipe.image}
+                            level={recipe.level}
+                            time={recipe.time}
+                            nationality={recipe.nationality}
+                            chefName={recipe.chef.name}
+                            chefPfp={recipe.chef.image}
+                            rating={recipe.rating}
+                            reviews={recipe.reviews}
+                        />
                     )
                 }
             </section>
