@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const Users = require('../Model/User');
+const Users = require('../Models/User');
 const { GenerateToken } = require('../Utils/GenerateToken');
 
 const LoginController = async ( req, res ) =>{
@@ -41,16 +41,16 @@ const LoginController = async ( req, res ) =>{
 }
 
 const RegisterController = async (req,res)=>{
-    const { name , email , password } = req.body;
+    const { username , email , password } = req.body;
 
-    const findUser = await Users.findOne({ email:email });
+    const findUser = await Users.findOne({ username:username , email:email });
 
     if(findUser === null){
         try {
             const hashedPassword = await bcrypt.hash(password,10);
             const newUser = new Users({
                 id:Math.floor(Math.random()*1E6),
-                name,
+                username,
                 email,
                 password:hashedPassword
             });

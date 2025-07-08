@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const ConnectDB = require('./Config/ConnectDB');
-const VerifyJWT = require('./Middleware/VerifyJWT');
+const VerifyJWT = require('./Middlewares/VerifyJWT');
 const { LoginController , RegisterController } = require('./Controllers/Auth');
 
 app.use(cors({

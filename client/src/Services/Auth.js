@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const handleRegister = async(name,email,password)=>{
+const handleRegister = async(username,email,password)=>{
     try{
         const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/register`,{
-            name,
+            username,
             email,
             password
         });

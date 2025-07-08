@@ -1,6 +1,6 @@
-const Blog = require("../Model/Blog");
-const Users = require("../Model/User");
-const Recipe = require('../Model/Recipe');
+const Blog = require("../Models/Blog");
+const Users = require("../Models/User");
+const Recipe = require('../Models/Recipe');
 
 const GetUser = async(req,res)=>{
     const { id } = req.user;
