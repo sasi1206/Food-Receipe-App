@@ -1,12 +1,13 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
-const ConnectDB = require('./Config/ConnectDB');
-require('dotenv').config();
 
+const ConnectDB = require('./Config/ConnectDB');
 const VerifyJWT = require('./Middleware/VerifyJWT');
+const { LoginController , RegisterController } = require('./Controllers/Auth');
 
 app.use(cors({
     origin : 'http://localhost:5173',
@@ -19,8 +20,8 @@ app.use(express.json());
 app.use(cookieParser());
 ConnectDB;
 
-app.post('/register',require('./Controllers/RegisterController'));
-app.post('/login',require('./Controllers/LoginController'));
+app.post('/register',RegisterController);
+app.post('/login',LoginController);
 app.get('/refresh_access_token',require('./Controllers/RefreshAccessToken'));
 app.get('/get_user',VerifyJWT,require('./Controllers/GetUser'));
 

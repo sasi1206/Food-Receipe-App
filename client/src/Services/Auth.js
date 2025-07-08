@@ -1,36 +1,35 @@
 import axios from "axios";
 
-const handleRegister = async(e)=>{
+const handleRegister = async(name,email,password)=>{
     try{
         const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/register`,{
-            first_name:firstname,
-            last_name:lastname,
-            email:email,
-            password:password
+            name,
+            email,
+            password
         });
         const { success , message } = response.data;
         if(success){
-            console.log(message);
+            return message;
         }
     }catch(error){
-        console.log(error);
+        throw new Error(error.response?.data?.message)
     }
 }
 
-const handleLogin = async(e)=>{
+const handleLogin = async(email,password)=>{
     try{
         const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/login`,{
-            email:email,
-            password:password
+            email,
+            password
         },{
             withCredentials:true,
         });
         const { success , message } = response.data;
         if(success){
-            console.log(message);
+            return message;
         }
     }catch(error){
-        console.log(error);
+        throw new Error(error.response?.data?.message);
     }
 }
 
